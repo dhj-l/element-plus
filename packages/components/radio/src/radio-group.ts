@@ -5,52 +5,56 @@ import { radioEmits } from './radio'
 import type { ExtractPropTypes } from 'vue'
 import type RadioGroup from './radio-group.vue'
 
+/**
+ * RadioGroup 组件属性定义
+ * 用于管理一组 Radio 或 RadioButton 组件
+ */
 export const radioGroupProps = buildProps({
   /**
-   * @description native `id` attribute
+   * @description 原生 id 属性
    */
   id: {
     type: String,
     default: undefined,
   },
   /**
-   * @description the size of radio buttons or bordered radios
+   * @description 单选按钮组或带边框单选框的尺寸
    */
   size: useSizeProp,
   /**
-   * @description whether the nesting radios are disabled
+   * @description 是否禁用嵌套的单选框
    */
   disabled: Boolean,
   /**
-   * @description binding value
+   * @description 绑定值
    */
   modelValue: {
     type: [String, Number, Boolean],
     default: undefined,
   },
   /**
-   * @description border and background color when button is active
+   * @description 按钮激活时的边框和背景色
    */
   fill: {
     type: String,
     default: '',
   },
   /**
-   * @description font color when button is active
+   * @description 按钮激活时的字体颜色
    */
   textColor: {
     type: String,
     default: '',
   },
   /**
-   * @description native `name` attribute
+   * @description 原生 name 属性
    */
   name: {
     type: String,
     default: undefined,
   },
   /**
-   * @description whether to trigger form validation
+   * @description 是否触发表单验证
    */
   validateEvent: {
     type: Boolean,
@@ -58,8 +62,13 @@ export const radioGroupProps = buildProps({
   },
   ...useAriaProps(['ariaLabel']),
 } as const)
+
+/** RadioGroup 组件属性类型 */
 export type RadioGroupProps = ExtractPropTypes<typeof radioGroupProps>
 
+/** RadioGroup 组件事件定义，继承自 Radio 组件的事件 */
 export const radioGroupEmits = radioEmits
+/** RadioGroup 组件事件类型 */
 export type RadioGroupEmits = typeof radioGroupEmits
+/** RadioGroup 组件实例类型 */
 export type RadioGroupInstance = InstanceType<typeof RadioGroup> & unknown
